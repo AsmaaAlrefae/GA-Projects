@@ -1,16 +1,23 @@
-`groceries` (3.4m rows, 206k users):
+`groceries` (32,434,489 rows):
 * `user_id`: Discrete(integer), Customer identifier (unique integers) 
 * `product_id`: Discrete(integer), Product identifier (unique integers) 
 * `product_name`: Object(String), Name of the product (contains groceries and non-groceries items)
 
-# FROM ORIGINAL FILES #
+| Column Name   | Dtype             | Description                                                      |
+| ------------- | ----------------- | ---------------------------------------------------------------- |
+| user_id       | Discrete(integer) | Customer identifier (unique integers)                            |
+| product_id    | Discrete(integer) | Product identifier (unique integers)                             |
+| product_name  | Object(String)    | Name of the product (contains groceries and non-groceries items) |
+
+
+#### FROM ORIGINAL FILES ####
 
 `orders` (3.4m rows, 206k users):
 * `order_id`: order identifier
 * `user_id`: customer identifier
 * `eval_set`: which evaluation set this order belongs in (see `SET` described below)
-* `order_number`: the order sequence number for this user (1 = first, n = nth)
-* `order_dow`: the day of the week the order was placed on
+* `order_number`: the order sequence number for this user (1 = first, n = nth) # POTENTIALLY IMPORTANT
+* `order_dow`: the day of the week the order was placed on # POTENTIALLY IMPORTANT
 * `order_hour_of_day`: the hour of the day the order was placed on  # POTENTIALLY IMPORTANT
 * `days_since_prior`: days since the last order, capped at 30 (with NAs for `order_number` = 1)
 
@@ -38,3 +45,6 @@ where `SET` is one of the four following evaluation sets (`eval_set` in `orders`
 * `"prior"`: orders prior to that users most recent order (~3.2m orders)
 * `"train"`: training data supplied to participants (~131k orders)
 * `"test"`: test data reserved for machine learning competitions (~75k orders)
+
+
+
