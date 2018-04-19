@@ -28,23 +28,10 @@ LOAD CSV WITH HEADERS FROM "file:///users_orders.csv" AS line WITH line
 MATCH (product:Product {id: toInteger(line.product_id)})
 MERGE (user:User {id: toInteger(line.user_id)})
 CREATE (user)-[b:BOUGHT]->(product)
-SET b.order_hour = toInteger(line.order_hour_of_day),
-	b.order_total = toInteger(line.total_orders)
-;
+SET b.order_total = toInteger(line.total_orders);
 
 //Added 205847 labels, created 205847 nodes, set 6183525 properties, created 2988839 relationships, completed after 82490 ms.
 
 
 
 
-// Committing it
-USING PERIODIC COMMIT 
-LOAD CSV WITH HEADERS FROM "file:///products.csv" AS line WITH line
-MERGE (p:Product {id: toInteger(line.product_id), name: toString(line.product_name), aisle: toInteger(line.aisle_id), department: toInteger(line.department_id)});
-
-
-// Explore dataset with APOC
-CALL apoc.load.csv("file:///products.csv", {sep:",", header:true,results:['map','list','strings','stringMap']})
-YIELD list AS line
-RETURN line
-LIMIT 10;
