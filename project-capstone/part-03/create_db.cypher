@@ -32,6 +32,18 @@ SET b.order_total = toInteger(line.total_orders);
 
 //Added 205847 labels, created 205847 nodes, set 6183525 properties, created 2988839 relationships, completed after 82490 ms.
 
+// Adding the recipes
+// Using APOC to load json files
+// Create constraint on the categories and recipes
+CREATE CONSTRAINT ON (c:Category) ASSERT c.name IS UNIQUE;
+CREATE CONSTRAINT ON (r:Recipe) ASSERT r.name is UNIQUE;
 
+CALL apoc.load.json("file:///epi_recipe_json_cleaned.json")
+YIELD value AS line
+CREATE (recipe:Recipe {name: line.title, rating: toInteger(line.rating), ingredients: line.ingredients, directions: line.directions})
+WITH recipe, line.categories AS categories
+UNWIND categories AS cat
+MERGE (c:Category {name:cat})
+CREATE (recipe)-[:TAGGED_AS]->(c)
 
-
+//Added 18449 labels, created 18449 nodes, set 71764 properties, created 219434 relationships, completed after 2705 ms.
