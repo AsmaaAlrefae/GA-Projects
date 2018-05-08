@@ -1,3 +1,8 @@
-# Ignore .pyc and .vscode files
+# Ignore these files
 .pyc
 .vscode
+.sqlite
+
+# So that GitHub doesn't explode
+/data/interim/*
+/data/raw/*
