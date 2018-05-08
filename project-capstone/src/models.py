@@ -4,6 +4,11 @@ import os
 
 graph = Graph()
 
+def random_persons():
+    # Random number generator for User ID since we can't 'login' as a User.
+    user_id = randint(0, 206210)
+    return user_id
+
 class User:
     def __init__(self, username):
         self.username = username
@@ -60,6 +65,4 @@ def get_todays_recent_posts():
 
     return graph.run(query, today=date())
 
-def random_persons():
-    user_id = randint(1,1000)
-    return user_id
+

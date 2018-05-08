@@ -17,7 +17,7 @@ A recipe recommender system using Instacart's 2017 sales data and Epicurious's r
 │   └── make_dataset.md <- Script to upload to Neo4j database
 │
 ├── notebooks           <- Jupyter notebooks. Naming convention is a number (for ordering), 
-│                          and a short `-` delimited description.
+│                          and a short `-` delimited description. xx denotes old notebooks, with broken internal links.
 │
 ├── references          <- Data dictionaries, manuals, and all other explanatory materials.
 │
