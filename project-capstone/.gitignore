@@ -1,0 +1,3 @@
+# Ignore .pyc and .vscode files
+.pyc
+.vscode
