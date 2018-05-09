@@ -15,11 +15,10 @@ class User:
 
     def get_purchases(self):
         query = '''
-        MATCH (u:User)-[b:BOUGHT]->(product:Product)
-        WHERE u.id = {userID}
+        MATCH (u:User {id: {userID}})-[b:BOUGHT]->(product:Product)
         WITH AVG(b.order_total) AS average_orders, b, product
         WHERE b.order_total >= average_orders
-        RETURN product, b
+        RETURN DISTINCT product, b
         ORDER BY b.order_total DESC
         LIMIT 10
         '''

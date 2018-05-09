@@ -1,46 +1,50 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <title></title>
         <meta charset="utf-8" />
-        <title>Recommender</title>
         <meta name="viewport" conten="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Recommender</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css" />
     </head>
 <body>
 
-    <h2>Tadaa!</h2>
+    <div class="container">
 
-    <b>User # {{ user_id }} bought:</b>
-    <ul class="recent purchases">
-        {% for row in recent_purchases %}
-          <li>
-              <b>{{ row.product.name }}</b> {{ row.b.order_total }} times
-        {% endfor %}
-    </ul>
+        <h1 class="title is-1">Tadaa!</h1>
 
-    <b>Recommended Products</b>
-    <ul class="recommendations">
-        {% for row in recommendations %}
-          <li>
-              <b>{{ row.rec.name }}</b>
-        {% endfor %}
-    </ul>
-    
-    <b>Novelty Product Recommendations</b>
-    <ul class="recommendations">
-        {% for row in novelty %}
-          <li>
-              <b>{{ row.otherProducts.name }}</b>
-        {% endfor %}
-    </ul>
+        <h2 class="title is-2">User # {{ user_id }} bought:</h2>
+        <ul class="content">
+            {% for row in recent_purchases %}
+                <li><b>{{ row.product.name }}</b> {{ row.b.order_total }} times
+            {% endfor %}
 
-    <form method="get" action="/">
-        <input type="submit" value="Back, roll again!"/>
-    </form>
-
-    <form method="get" action="/recipes">
-        <input type="submit" value="Show me the recipes...!"/>
-    </form>
+        <h2 class="title is-2">Recommended Products</h2>
+        <ul class="content">
+            {% for row in recommendations %}
+            <li><b>{{ row.rec.name }}</b>
+            {% endfor %}
+        </ul>
         
+        <h2 class="title is-2">Novelty Product Recommendations</h2>
+        <ul class="content">
+            {% for row in novelty %}
+            <li><b>{{ row.otherProducts.name }}</b>
+            {% endfor %}
+        </ul>
+
+        <div class="control">
+            <form method="get" action="/recipes">
+                <button class="button is-primary">Show me the recipes...!</button>
+            </form>
+        </div>
+
+        <div class="control">
+            <form method="get" action="/">
+                <button class="button is-light">Back, roll again!</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

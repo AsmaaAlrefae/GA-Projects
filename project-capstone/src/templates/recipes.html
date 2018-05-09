@@ -1,43 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <title></title>
         <meta charset="utf-8" />
-        <title>Recipe Recommender</title>
         <meta name="viewport" conten="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Recommender</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css" />
     </head>
 <body>
+    <div class="container">
 
-    <h2>Tadaa!</h2>
+    <h1 class="title is-1">Tadaa!</h1>
 
-    <h3>Recipe Recommendations</h3>
-    <ul class="recommendations">
+    <h2 class="title is-2">Recipe Recommendations</h2>
+    <ul class="content">
         {% for row in recipes %}
           <ul>
-              <b>{{ row.recipe.name }}</b> 
+              <h3 class="title is-3">{{ row.recipe.name }}</h3>
 
-              <p>Ratings: {{ row.recipe.rating }}</p>
+              <p class="subtitle is-5">Ratings: {{ row.recipe.rating }}</p>
 
-              <p>Ingredients:
+              <p class="subtitle is-4">Ingredients:</p>
+              <ul>
               {% for ingredient in row.recipe.ingredients %}
               <li>{{ ingredient }}</li>
               {% endfor %}
-              </p>
+              </ul>
 
-              <p>Directions:
+              <p class="subtitle is-4">Directions:</p>
+              <ul>
               {% for direction in row.recipe.directions %}
               <li>{{ direction }}</li>
               {% endfor %}
-              </p>
+              </ul>
 
             </ul>
         {% endfor %}
     </ul>
 
-    <form method="get" action="/">
-        <input type="submit" value="Start Again!"/>
-
-    </form>
-
+        <div class="control">
+            <form method="get" action="/">
+                <button class="button is-primary">Start Again!</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
