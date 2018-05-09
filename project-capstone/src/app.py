@@ -1,9 +1,10 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, session
 from models import random_persons, graph, User
 #request, session, redirect, url_for, 
 #from .models import User, get_todays_recent_posts
 
 app = Flask(__name__)
+app.secret_key = 'xyz'
 
 @app.route('/')
 def index():
@@ -14,6 +15,7 @@ def feeling_hungry():
 
     # Randomize a User ID
     user_id = random_persons()
+    session['user'] = user_id
 
     # Initialize the User class with the random user_id selected
     current_user = User(user_id)
@@ -27,20 +29,36 @@ def feeling_hungry():
     # Get the novel product recommendations
     novelty = current_user.get_novelty()
 
-    # Reinitialise another instance/variable of the top purchases
+    # # Reinitialise another instance/variable of the top purchases
+    # purchases = current_user.get_purchases()
+    # for row in purchases:
+    #     product_name = row['product']['name']
+    #     word_list = product_name.split() # Split the product names into single words
+    #     recipes = current_user.get_recipes(product_list=word_list) # Get the recipe recommendations here
+
+    return render_template('display.html', 
+            user_id=user_id, 
+            recent_purchases=recent_purchases, 
+            # recipes=recipes,
+            novelty=novelty,
+            recommendations=recommendations)
+    #return (text_ + str(user_id))
+
+@app.route('/recipes', methods=['GET'])
+def show_recipe():
+
+    user_id = session.get('user')
+
+    current_user = User(user_id)
     purchases = current_user.get_purchases()
     for row in purchases:
         product_name = row['product']['name']
         word_list = product_name.split() # Split the product names into single words
         recipes = current_user.get_recipes(product_list=word_list) # Get the recipe recommendations here
 
-    return render_template('display.html', 
-            user_id=user_id, 
-            recent_purchases=recent_purchases, 
-            recipes=recipes,
-            novelty=novelty,
-            recommendations=recommendations)
-    #return (text_ + str(user_id))
+    return render_template('recipes.html',
+            recipes=recipes)
+
 
 # Remember to remove this before deployment
 if __name__ == '__main__':

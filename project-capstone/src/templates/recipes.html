@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8" />
+        <title>Recipe Recommender</title>
+        <meta name="viewport" conten="width=device-width, initial-scale=1">
+    </head>
+<body>
+
+    <h2>Tadaa!</h2>
+
+    <h3>Recipe Recommendations</h3>
+    <ul class="recommendations">
+        {% for row in recipes %}
+          <ul>
+              <b>{{ row.recipe.name }}</b> 
+
+              <p>Ratings: {{ row.recipe.rating }}</p>
+
+              <p>Ingredients:
+              {% for ingredient in row.recipe.ingredients %}
+              <li>{{ ingredient }}</li>
+              {% endfor %}
+              </p>
+
+              <p>Directions:
+              {% for direction in row.recipe.directions %}
+              <li>{{ direction }}</li>
+              {% endfor %}
+              </p>
+
+            </ul>
+        {% endfor %}
+    </ul>
+
+    <form method="get" action="/">
+        <input type="submit" value="Start Again!"/>
+
+    </form>
+
+</body>
+</html>

@@ -3,6 +3,8 @@
     <head>
         <title></title>
         <meta charset="utf-8" />
+        <title>Recommender</title>
+        <meta name="viewport" conten="width=device-width, initial-scale=1">
     </head>
 <body>
 
@@ -32,21 +34,13 @@
         {% endfor %}
     </ul>
 
-    <b>Recipe Recommendations</b>
-    <ul class="recommendations">
-        {% for row in recipes %}
-          <li>
-              <b>{{ row.recipe.name }}</b> Ratings: {{ row.recipe.rating }} 
-              {% for elem in row.recipe.directions %}
-              <ul>{{elem}}</ul>
-              {% endfor %}
-        {% endfor %}
-    </ul>
-
     <form method="get" action="/">
-        <input type="submit" value="Back..."/>
-
+        <input type="submit" value="Back, roll again!"/>
     </form>
 
+    <form method="get" action="/recipes">
+        <input type="submit" value="Show me the recipes...!"/>
+    </form>
+        
 </body>
 </html>
