@@ -1,15 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title></title>
-        <meta charset="utf-8" />
-        <meta name="viewport" conten="width=device-width, initial-scale=1">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Recommender</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css" />
-    </head>
-<body>
-
+{% extends "layout.html" %}
+{% block content %}
     <div class="container">
 
         <h1 class="title is-1">Tadaa!</h1>
@@ -34,9 +24,9 @@
             {% endfor %}
         </ul>
 
-        <div class="control">
+        <div class="button">
             <form method="get" action="/recipes">
-                <button class="button is-primary">Show me the recipes...!</button>
+                <button class="button is-primary">Show me the recipes!</button>
             </form>
         </div>
 
@@ -45,6 +35,6 @@
                 <button class="button is-light">Back, roll again!</button>
             </form>
         </div>
+
     </div>
-</body>
-</html>
+{% endblock %}

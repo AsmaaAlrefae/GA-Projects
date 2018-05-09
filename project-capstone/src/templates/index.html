@@ -1,23 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title></title>
-        <meta charset="utf-8" />
-        <meta name="viewport" conten="width=device-width, initial-scale=1">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Recommender</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css" />
-    </head>
-<body>
+{% extends "layout.html" %}
+{% block content %}
     <div class="container">
-
-        <h1 class="title is-1">I'm Feeling Hungry.</h1>
+        <div class="block">
+        <h class="title is-2">I'm Feeling Hungry.</h>
+        </div>
 
         <div class="control">
             <form method="get" action="/feeling_hungry">
-                <button class="button is-primary" >Go!</button>
+                <button class="button is-dark">Go!</button>
             </form>
+            <br>
         </div>
+
+        <div class="block">
+            <div class="content">
+                <p>Datasets:</p>
+                <ul>
+                    <li><a href="https://www.instacart.com/datasets/grocery-shopping-2017">The Instacart Online Grocery Shopping Dataset 2017</a>.</li>
+                    <li>Epicurious.com recipe dataset <a href="https://www.kaggle.com/hugodarwood/epirecipes">found</a> on Kaggle.</li>
+                </ul>
+            </div>
+        </div>
+
     </div>
-</body>
-</html>
+{% endblock %}

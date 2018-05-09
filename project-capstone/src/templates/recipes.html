@@ -1,34 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title></title>
-        <meta charset="utf-8" />
-        <meta name="viewport" conten="width=device-width, initial-scale=1">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Recommender</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css" />
-    </head>
-<body>
+{% extends "layout.html" %}
+{% block content %}
     <div class="container">
 
     <h1 class="title is-1">Tadaa!</h1>
 
     <h2 class="title is-2">Recipe Recommendations</h2>
-    <ul class="content">
+    <p class="content">
         {% for row in recipes %}
           <ul>
-              <h3 class="title is-3">{{ row.recipe.name }}</h3>
+              <h class="title is-4">{{ row.recipe.name }}</h>
 
-              <p class="subtitle is-5">Ratings: {{ row.recipe.rating }}</p>
+              <p class="subtitle is-6">Ratings: {{ row.recipe.rating }}</p>
 
-              <p class="subtitle is-4">Ingredients:</p>
+              <p class="subtitle is-6">Ingredients:</p>
+
               <ul>
               {% for ingredient in row.recipe.ingredients %}
               <li>{{ ingredient }}</li>
               {% endfor %}
               </ul>
 
-              <p class="subtitle is-4">Directions:</p>
+              <p class="subtitle is-6">Directions:</p>
               <ul>
               {% for direction in row.recipe.directions %}
               <li>{{ direction }}</li>
@@ -37,13 +29,13 @@
 
             </ul>
         {% endfor %}
-    </ul>
+        </p>
 
         <div class="control">
             <form method="get" action="/">
                 <button class="button is-primary">Start Again!</button>
             </form>
         </div>
+
     </div>
-</body>
-</html>
+{% endblock %}

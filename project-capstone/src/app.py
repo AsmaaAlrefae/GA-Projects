@@ -4,7 +4,9 @@ from models import random_persons, graph, User
 #from .models import User, get_todays_recent_posts
 
 app = Flask(__name__)
-app.secret_key = 'xyz'
+
+# to initialize the session to transfer user_id from feeling hungry to recipes
+app.secret_key = 'xyz' 
 
 @app.route('/')
 def index():
@@ -29,20 +31,11 @@ def feeling_hungry():
     # Get the novel product recommendations
     novelty = current_user.get_novelty()
 
-    # # Reinitialise another instance/variable of the top purchases
-    # purchases = current_user.get_purchases()
-    # for row in purchases:
-    #     product_name = row['product']['name']
-    #     word_list = product_name.split() # Split the product names into single words
-    #     recipes = current_user.get_recipes(product_list=word_list) # Get the recipe recommendations here
-
     return render_template('display.html', 
             user_id=user_id, 
             recent_purchases=recent_purchases, 
-            # recipes=recipes,
             novelty=novelty,
             recommendations=recommendations)
-    #return (text_ + str(user_id))
 
 @app.route('/recipes', methods=['GET'])
 def show_recipe():
@@ -58,7 +51,6 @@ def show_recipe():
 
     return render_template('recipes.html',
             recipes=recipes)
-
 
 # Remember to remove this before deployment
 if __name__ == '__main__':
