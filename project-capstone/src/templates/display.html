@@ -5,8 +5,44 @@
         <meta charset="utf-8" />
     </head>
 <body>
-    <h3>All the random stuff here for User ID: {{ user_id }}</h3>
+
+    <h2>Tadaa!</h2>
+
+    <b>User # {{ user_id }} bought:</b>
+    <ul class="recent purchases">
+        {% for row in recent_purchases %}
+          <li>
+              <b>{{ row.product.name }}</b> {{ row.b.order_total }} times
+        {% endfor %}
+    </ul>
+
+    <b>Recommended Products</b>
+    <ul class="recommendations">
+        {% for row in recommendations %}
+          <li>
+              <b>{{ row.rec.name }}</b>
+        {% endfor %}
+    </ul>
     
+    <b>Novelty Product Recommendations</b>
+    <ul class="recommendations">
+        {% for row in novelty %}
+          <li>
+              <b>{{ row.otherProducts.name }}</b>
+        {% endfor %}
+    </ul>
+
+    <b>Recipe Recommendations</b>
+    <ul class="recommendations">
+        {% for row in recipes %}
+          <li>
+              <b>{{ row.recipe.name }}</b> Ratings: {{ row.recipe.rating }} 
+              {% for elem in row.recipe.directions %}
+              <ul>{{elem}}</ul>
+              {% endfor %}
+        {% endfor %}
+    </ul>
+
     <form method="get" action="/">
         <input type="submit" value="Back..."/>
 
