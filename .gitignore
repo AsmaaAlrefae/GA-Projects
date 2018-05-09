@@ -1,2 +1,11 @@
 .DS_Store
 .ipynb_checkpoints
+
+# Ignore these files
+.pyc
+.vscode
+.sqlite
+
+# So that GitHub doesn't explode
+/data/interim/*
+/data/raw/*
