@@ -19,7 +19,7 @@ class User:
         WHERE u.id = {userID}
         WITH AVG(b.order_total) AS average_orders, b, product
         WHERE b.order_total >= average_orders
-        RETURN DISTINCT product, b
+        RETURN product, b
         ORDER BY b.order_total DESC
         LIMIT 10
         '''
