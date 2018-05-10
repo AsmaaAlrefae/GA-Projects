@@ -32,7 +32,7 @@ class User:
         WITH u1, avg(b.order_total) AS u1_mean
 
         MATCH (u1)-[b1:BOUGHT]->(rec:Product)<-[b2:BOUGHT]-(u2)
-        WITH u1, u1_mean, u2, COLLECT({b1: b1, b2: b2}) AS totalorders WHERE size(totalorders) > 10
+        WITH u1, u1_mean, u2, COLLECT({b1: b1, b2: b2}) AS totalorders WHERE size(totalorders) > 2
 
         MATCH (u2)-[b:BOUGHT]->(rec:Product)
         WITH u1, u1_mean, u2, avg(b.order_total) AS u2_mean, totalorders
