@@ -1,30 +1,50 @@
 {% extends "layout.html" %}
 {% block content %}
     <div class="container">
+        <div class="block">
+            <h class="title is-2">Tadaa!</h>
+        </div>
 
-        <h1 class="title is-1">Tadaa!</h1>
+        <div class="block">
+            <div class="content">
+                <h class="title is-3">User # {{ user_id }} bought:</h>
+                <p class="content">
+                    <ul>
+                        {% for row in recent_purchases %}
+                        <li><b>{{ row.product.name }}</b> {{ row.b.order_total }} times
+                        {% endfor %}
+                    </ul>
+            </div>
 
-        <h2 class="title is-2">User # {{ user_id }} bought:</h2>
-        <ul class="content">
-            {% for row in recent_purchases %}
-                <li><b>{{ row.product.name }}</b> {{ row.b.order_total }} times
-            {% endfor %}
+        </div>
 
-        <h2 class="title is-2">Recommended Products</h2>
-        <ul class="content">
-            {% for row in recommendations %}
-            <li><b>{{ row.rec.name }}</b>
-            {% endfor %}
-        </ul>
-        
-        <h2 class="title is-2">Novelty Product Recommendations</h2>
-        <ul class="content">
-            {% for row in novelty %}
-            <li><b>{{ row.otherProducts.name }}</b>
-            {% endfor %}
-        </ul>
+        <div class="block">
+            <div class="content">
+                <h class="title is-3">Recommended Products</h>
+                <p class="content">
+                    <ul>
+                        {% for row in recommendations %}
+                        <li><b>{{ row.rec.name }}</b>
+                        {% endfor %}
+                    </ul>
+                </p>
+            </div>
+        </div>
 
-        <div class="button">
+        <div class="block">
+            <div class="content">
+                <h class="title is-3">Novelty Product Recommendations</h>
+                <p class="content">
+                    <ul>
+                        {% for row in novelty %}
+                        <li><b>{{ row.otherProducts.name }}</b>
+                        {% endfor %}
+                    </ul>
+                </p>
+            </div>
+        </div>
+
+        <div class="control">
             <form method="get" action="/recipes">
                 <button class="button is-primary">Show me the recipes!</button>
             </form>
