@@ -13,7 +13,7 @@ CREATE CONSTRAINT ON (a:Aisle) ASSERT a.id IS UNIQUE;
 CREATE CONSTRAINT ON (d:Department) ASSERT d.id IS UNIQUE;
 // For the users
 CREATE CONSTRAINT ON (u:User) ASSERT u.id IS UNIQUE;
-//For the recipes
+// For the recipes
 CREATE CONSTRAINT ON (c:Category) ASSERT c.name IS UNIQUE;
 CREATE CONSTRAINT ON (r:Recipe) ASSERT r.name is UNIQUE;
 
