@@ -1,9 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
     <div class="container">
-        <div class="block">
-            <h class="title is-2">Tadaa!</h>
-        </div>
 
         <div class="block">
             <div class="content">
@@ -15,7 +12,19 @@
                         {% endfor %}
                     </ul>
             </div>
+        </div>
 
+        <div class="block">
+            <div class="content">
+                <h class="title is-3">Try Something New</h>
+                <p class="content">
+                    <ul>
+                        {% for row in novelty %}
+                        <li>{{ row.otherProducts.name }}
+                        {% endfor %}
+                    </ul>
+                </p>
+            </div>
         </div>
 
         <div class="columns">
@@ -24,7 +33,7 @@
                 <p class="content">
                     <ul>
                         {% for row in recommendationsA %}
-                        <li><b>{{ row.rec.name }}</b>
+                        <li>{{ row.rec.name }}
                         {% endfor %}
                     </ul>
                 </p>
@@ -34,36 +43,25 @@
                 <p class="content">
                     <ul>
                         {% for row in recommendationsB %}
-                        <li><b>{{ row.otherProducts.name }}</b>
-                        {% endfor %}
-                    </ul>
-                </p>
-            </div>
-          </div>
-
-        <div class="block">
-            <div class="content">
-                <h class="title is-3">Novelty Product Recommendations</h>
-                <p class="content">
-                    <ul>
-                        {% for row in novelty %}
-                        <li><b>{{ row.otherProducts.name }}</b>
+                        <li>{{ row.otherProducts.name }}
                         {% endfor %}
                     </ul>
                 </p>
             </div>
         </div>
 
-        <div class="control">
-            <form method="get" action="/recipes">
-                <button class="button is-primary">Show me the recipes!</button>
-            </form>
-        </div>
-
-        <div class="control">
-            <form method="get" action="/">
-                <button class="button is-light">Back, roll again!</button>
-            </form>
+        <div class="field is-grouped">
+            <div class="control">
+                <form method="get" action="/recipes">
+                    <button class="button is-link">Show me the recipes!</button>
+                </form>
+            </div>
+    
+            <div class="control">
+                <form method="get" action="/">
+                    <button class="button is-light">Back, roll again!</button>
+                </form>
+            </div>
         </div>
 
     </div>

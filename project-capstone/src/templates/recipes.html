@@ -1,36 +1,49 @@
 {% extends "layout.html" %}
 {% block content %}
     <div class="container">
-        <div class="block">
-            <div class="content">
-
-                {% for row in recipes %}
-
-                <h class="title is-3">{{ row.recipe.name }}</h>
-                <h class="subtitle is-5"> Ratings: {{ row.recipe.rating }}</h>
-                <p class="content">
-                    <strong>Ingredients:</strong>
-                    <ul>
-                        {% for ingredient in row.recipe.ingredients %}
-                        <li>{{ ingredient }}</li>
-                        {% endfor %}
-                    </ul>
-                    <strong>Directions:</strong>
-                    <ol>
-                        {% for direction in row.recipe.directions %}
-                        <li>{{ direction }}</li>
-                        {% endfor %}
-                    </ol>
-                </p>
-
-                {% endfor %}
-
+        {% for row in recipes %}
+        <div class="card">
+            
+            <div class="card-content">   
+                <div class="media">
+                    <div class="media-left">
+                    <figure class="image is-128x128">
+                        <img src="https://bulma.io/images/placeholders/128x128.png" alt="Placeholder image">
+                    </figure>
+                    </div>
+                    <div class="media-content">
+                    <p class="title is-3">{{ row.recipe.name }}</p>
+                    <p class="subtitle is-5">Ratings: {{ row.recipe.rating }}</p>
+                    <a class="button is-link is-outlined is-small">Add Ingredients to Cart</a>
+                    </div>
+                </div>
+            
+                <div class="columns">
+                    <div class="column">
+                        <strong>Ingredients:</strong>
+                        <ul>
+                            {% for ingredient in row.recipe.ingredients %}
+                            <li>{{ ingredient }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="column">
+                        <strong>Directions:</strong>
+                        <ol>
+                            {% for direction in row.recipe.directions %}
+                            <li>{{ direction }}</li>
+                            {% endfor %}
+                        </ol>
+                    </div>
+                </div>
             </div>
         </div>
+        {% endfor %}
 
+        <br>
         <div class="control">
             <form method="get" action="/">
-                <button class="button is-primary">Start Again!</button>
+                <button class="button is-link">Start Again!</button>
             </form>
         </div>
 

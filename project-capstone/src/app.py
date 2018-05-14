@@ -25,12 +25,12 @@ def feeling_hungry():
     # Get the top purchases
     recent_purchases = current_user.get_purchases()
 
-    # Get the product recommendations
-    recommendationsA = current_user.get_recommendationsA()
-    recommendationsB = current_user.get_recommendationsB()
-
     # Get the novel product recommendations
     novelty = current_user.get_novelty()
+
+    # Get the product recommendations; both A and B
+    recommendationsA = current_user.get_recommendationsA()
+    recommendationsB = current_user.get_recommendationsB()
 
     return render_template('display.html', 
             user_id=user_id, 

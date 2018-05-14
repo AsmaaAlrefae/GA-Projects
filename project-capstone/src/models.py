@@ -53,27 +53,6 @@ class User:
         LIMIT 5'''
 
         return graph.run(query, userID=self.user_id)
-    
-    def get_novelty(self):
-        # Novelty recommendations.
-        query = '''
-        MATCH (user:User {id: {userID}})-[:BOUGHT]->(product)-[:FOUND_IN]->(a:Aisle)-[:IN_CLUSTER]->(cluster)
-        WITH user, cluster, COUNT(*) AS times
-        ORDER BY times ASC
-        LIMIT 1
-        WITH cluster
-        MATCH (cluster)<-[:IN_CLUSTER]-(a)<-[:FOUND_IN]-(p)
-        WITH cluster, a.name AS aisleName, COUNT(p) as numberOfProducts
-        ORDER BY numberOfProducts DESC
-        LIMIT 1
-        WITH aisleName AS x
-        MATCH (Aisle {name: x})<-[:FOUND_IN]-(otherProducts)<-[b:BOUGHT]-()
-        WHERE b.order_total > 10
-        RETURN DISTINCT otherProducts, MAX(b.order_total) AS maxOrders
-        ORDER BY maxOrders DESC
-        LIMIT 5'''
-
-        return graph.run(query, userID=self.user_id)
 
     def get_recommendationsB(self):
         # Novelty recommendations.
@@ -93,6 +72,27 @@ class User:
         RETURN DISTINCT otherProducts, MAX(b.order_total) AS maxOrders
         ORDER BY maxOrders DESC
         LIMIT 5'''
+
+        return graph.run(query, userID=self.user_id)
+    
+    def get_novelty(self):
+        # Novelty recommendations.
+        query = '''
+        MATCH (user:User {id: {userID}})-[:BOUGHT]->(product)-[:FOUND_IN]->(a:Aisle)-[:IN_CLUSTER]->(cluster)
+        WITH user, cluster, COUNT(*) AS times
+        ORDER BY times ASC
+        LIMIT 1
+        WITH cluster
+        MATCH (cluster)<-[:IN_CLUSTER]-(a)<-[:FOUND_IN]-(p)
+        WITH cluster, a.name AS aisleName, COUNT(p) as numberOfProducts
+        ORDER BY numberOfProducts DESC
+        LIMIT 1
+        WITH aisleName AS x
+        MATCH (Aisle {name: x})<-[:FOUND_IN]-(otherProducts)<-[b:BOUGHT]-()
+        WHERE b.order_total > 10
+        RETURN DISTINCT otherProducts, MAX(b.order_total) AS maxOrders
+        ORDER BY maxOrders DESC
+        LIMIT 2'''
 
         return graph.run(query, userID=self.user_id)
 
