@@ -26,7 +26,8 @@ def feeling_hungry():
     recent_purchases = current_user.get_purchases()
 
     # Get the product recommendations
-    recommendations = current_user.get_recommendations()
+    recommendationsA = current_user.get_recommendationsA()
+    recommendationsB = current_user.get_recommendationsB()
 
     # Get the novel product recommendations
     novelty = current_user.get_novelty()
@@ -35,7 +36,8 @@ def feeling_hungry():
             user_id=user_id, 
             recent_purchases=recent_purchases, 
             novelty=novelty,
-            recommendations=recommendations)
+            recommendationsA=recommendationsA,
+            recommendationsB=recommendationsB)
 
 @app.route('/recipes', methods=['GET'])
 def show_recipe():

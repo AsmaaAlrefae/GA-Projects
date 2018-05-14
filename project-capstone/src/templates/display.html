@@ -18,18 +18,28 @@
 
         </div>
 
-        <div class="block">
-            <div class="content">
-                <h class="title is-3">Recommended Products</h>
+        <div class="columns">
+            <div class="column">
+                <h class="title is-3">Recommended Products A</h>
                 <p class="content">
                     <ul>
-                        {% for row in recommendations %}
+                        {% for row in recommendationsA %}
                         <li><b>{{ row.rec.name }}</b>
                         {% endfor %}
                     </ul>
                 </p>
             </div>
-        </div>
+            <div class="column">
+                <h class="title is-3">Recommended Products B</h>
+                <p class="content">
+                    <ul>
+                        {% for row in recommendationsB %}
+                        <li><b>{{ row.otherProducts.name }}</b>
+                        {% endfor %}
+                    </ul>
+                </p>
+            </div>
+          </div>
 
         <div class="block">
             <div class="content">
