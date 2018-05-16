@@ -26,6 +26,8 @@ A recipe recommender system using Instacart's 2017 sales data and Epicurious's r
 │
 ├── requirements.txt    <- The requirements file for reproducing the analysis environment.
 │
+├── docker              <- Contains docker files (doesn't work as is, but I decided to save into GitHub, just in case)
+│
 └── src                 <- Source code for the Flask web app.
     ├── __init__.py     <- A Flask/Python thing.
     │
