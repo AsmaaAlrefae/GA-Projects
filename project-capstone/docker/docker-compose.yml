@@ -22,3 +22,5 @@ services:
       - './neo4j/data:/data'
       - './neo4j/conf:/conf'
       - './neo4j/logs:/logs'
+      - './neo4j/import:/import'
+      - './neo4j/plugins:/plugins'
