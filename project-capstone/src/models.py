@@ -1,6 +1,5 @@
 from py2neo import Graph
 from random import randint
-import os
 
 graph = Graph(bolt=True, host="localhost", http_port=7687, user='neo4j', password='pasta')
 
